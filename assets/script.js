@@ -12,71 +12,87 @@ var timestate;
 var timeleft = 60
 var questionindex = 0
 //function that starts timer hides start screen and unhides questions//
-function startquiz () {
-startscreen.setAttribute("class", "hide")
-questions.removeAttribute("class" , "hide")
-timestate = setInterval(function(){
-timeleft = timeleft -1
-time.textContent = timeleft
-if (timeleft <=0){
-clearInterval(timestate)
-}
-}, 1000)
-showquestions()
-}
-function showquestions(){
-    var currentQuestion = quizQuestions[questionindex];
-
-    // update title
-    
-    questiontitle.textContent = currentQuestion.title;
-  
-    // clear out any old question choices
-    choices.innerHTML = '';
-  
-    // loop over choices
-    for (var i = 0; i < currentQuestion.choices.length; i++) {
-      // create new button for each choice
-     
-      var choiceNode = document.createElement('button');
-      choiceNode.setAttribute('class', 'choice');
-      choiceNode.setAttribute('value', currentQuestion.choices[i]);
-  
-      choiceNode.textContent = currentQuestion.choices[i];
-        choiceNode.onclick = checkanswer
-      // display on the page
-      choices.appendChild(choiceNode);
+function startquiz() {
+  startscreen.setAttribute("class", "hide")
+  questions.removeAttribute("class", "hide")
+  timestate = setInterval(function () {
+    timeleft = timeleft - 1
+    time.textContent = timeleft
+    if (timeleft <= 0) {
+      clearInterval(timestate)
     }
+  }, 1000)
+  showquestions()
+}
+function showquestions() {
+  var currentQuestion = quizQuestions[questionindex];
+
+  // update title
+
+  questiontitle.textContent = currentQuestion.title;
+
+  // clear out any old question choices
+  choices.innerHTML = '';
+
+  // loop over choices
+  for (var i = 0; i < currentQuestion.choices.length; i++) {
+    // create new button for each choice
+
+    var choiceNode = document.createElement('button');
+    choiceNode.setAttribute('class', 'choice');
+    choiceNode.setAttribute('value', currentQuestion.choices[i]);
+
+    choiceNode.textContent = currentQuestion.choices[i];
+    choiceNode.onclick = checkanswer
+    // display on the page
+    choices.appendChild(choiceNode);
+  }
 
 
 
 }
 
-function checkanswer (){
-    if(this.value === quizQuestions[questionindex].answer){
-        console.log("correct")
-    } else {
-        console.log("incorrect")
-    }
-    questionindex =  questionindex + 1
-    //call displayquestion for next question index
+function endQuiz() {
+  // stop the timer
+  clearInterval(timestate)
+
+  questions.classList.add("hide")
+  endscreen.classList.remove("hide")
+
+  finalscore.textContent = timeleft
+}
+
+function checkanswer() {
+  if (this.value === quizQuestions[questionindex].answer) {
+    console.log("correct")
+  } else {
+    console.log("incorrect")
+    timeleft-=10;
+  }
+  questionindex = questionindex + 1
+  //call displayquestion for next question index
+
+  if (questionindex >= quizQuestions.length) {
+    endQuiz()
+  } else {
     showquestions()
+  }
 }
 startbutton.onclick = startquiz
 
 
 var quizQuestions = [
-    {
-      title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
-    },
-    {
-      title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
-    }
-  ]
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+  },
+  {
+    title: "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer: "parentheses"
+  }
+]
 
 
 
