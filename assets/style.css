@@ -2,3 +2,12 @@
 display: none;
 
 }
+
+main {
+    display: flex;
+    justify-content: space-between;
+}
+
+main section {
+    margin: 50px;
+}

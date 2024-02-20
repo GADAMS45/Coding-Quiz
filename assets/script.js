@@ -8,9 +8,13 @@ var endscreen = document.getElementById("end-screen")
 var finalscore = document.getElementById("final-score")
 var initials = document.getElementById("initials")
 var submit = document.getElementById("submit")
+var scoredata = document.getElementById("score-data")
 var timestate;
 var timeleft = 60
 var questionindex = 0
+
+
+var highscoreData = JSON.parse(localStorage.getItem("highscores")) || []
 //function that starts timer hides start screen and unhides questions//
 function startquiz() {
   startscreen.setAttribute("class", "hide")
@@ -91,12 +95,56 @@ var quizQuestions = [
     title: "The condition in an if / else statement is enclosed within ____.",
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
     answer: "parentheses"
-  }
+  },
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+  },
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+  },
+  {
+    title: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"
+  },
 ]
 
+function saveSubmit() {
+  var score = timeleft;
+  var name = initials.value;
+
+
+  var data = {
+    score,
+    name
+  }
+
+  highscoreData.push(data)
+
+  localStorage.setItem("highscores", JSON.stringify(highscoreData))
+
+  window.location.reload();
+}
+
+submit.addEventListener("click", saveSubmit)
+
+
+function loadData () {
+
+  for(i = 0; i < highscoreData.length; i++) {
+    var newLi = document.createElement("li");
+    newLi.textContent = highscoreData[i].name + " - " + highscoreData[i].score
+  
+    scoredata.append(newLi)
+  }
+  
+}
 
 
 
-
-
+loadData();
 
