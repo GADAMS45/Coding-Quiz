@@ -87,29 +87,29 @@ startbutton.onclick = startquiz
 
 var quizQuestions = [
   {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+    title: "What are booleans?:",
+    choices: ["fooleans", "is a funny word", "a data type", "water breaks"],
+    answer: "a data type"
   },
   {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
+    title: "A navigation bar needs HTML as a base.",
+    choices: ["True", "False"],
+    answer: "True"
   },
   {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+    title: "What does CSS stand for?:",
+    choices: ["Cascade Style Sheets", "Costing Sick Sheet", "Cows Stink Sheets", "Calander Style Sheets"],
+    answer: "Cascade Style Sheets"
   },
   {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+    title: "What is a NAV bar?:",
+    choices: ["it contains a list of links", "pythagorean theorem", "java", "java with the script"],
+    answer: "it contains a list of links"
   },
   {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
-    answer: "alerts"
+    title: "CSS is used to..:",
+    choices: ["wash cars", "Style a web page", "form opinions", "political views"],
+    answer: "Style a web page"
   },
 ]
 
